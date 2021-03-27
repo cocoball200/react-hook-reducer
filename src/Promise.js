@@ -1,11 +1,9 @@
-import react from "react";
-
-function Increase(number) {
+function increase(number) {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       const result = number + 10;
       if (result > 50) {
-        const e = new Error("NumberTooBig");
+        const e = new Error("NumberToBIG");
         return reject(e);
       }
       resolve(result);
@@ -13,3 +11,24 @@ function Increase(number) {
   });
   return promise;
 }
+
+increase(0)
+  .then((number) => {
+    console.log(number);
+    return increase(number);
+  })
+  .then((number) => {
+    console.log(number);
+    return increase(number);
+  })
+  .then((number) => {
+    console.log(number);
+    return increase(number);
+  })
+  .then((number) => {
+    console.log(number);
+    return increase(number);
+  })
+  .catch((e) => {
+    console.log(e);
+  });
